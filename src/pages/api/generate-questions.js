@@ -164,6 +164,11 @@ export default async function handler(req, res) {
     }
   }
 
+  console.error("[generate-questions] fallo tras reintentos:", {
+    lastErrorKind,
+    lastReason,
+  });
+
   if (lastErrorKind === "rate_limit") {
     return res.status(429).json({
       error: "rate_limited",
